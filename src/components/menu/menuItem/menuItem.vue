@@ -1,24 +1,22 @@
 <template>
   <div class="menu-item select" @click="changeRouter" :class="selectedClass">
-    <div class="menu-item-title" @click="showSubMenu">
+    <div class="menu-item-title">
       <div class="menu-item-line"></div>
       <div class="menu-item-icon">{{icon}}</div>
       <div class="menu-item-name">{{name}}</div>
     </div>
     <div class="menu-item-sub">
-      <slot>
-        <sub-menu path="/index/home/test" title="子菜单栏"></sub-menu>
+      <slot name="body">
+<!--        <sub-menu path="/index/home/test" title="子菜单栏"></sub-menu>-->
       </slot>
     </div>
   </div>
 </template>
 
 <script>
-  import subMenu from "@/components/menu/subMenu/subMenu";
   export default {
     name: "menuItem",
     components: {
-      subMenu
     },
     props: {
       path: {
@@ -40,17 +38,21 @@
     },
     methods: {
       changeRouter() {
-        this.$router.push(this.path);
+        this.$store.commit(
+          'changeMenuIndex', this.index
+        );
       },
-      showSubMenu() {
-        let subMenu = document.getElementsByClassName('menu-item-sub')[this.index];
-        subMenu.style.display = subMenu.style.display === 'none' ? 'block' : 'none';
-        // alert("sdfsdf")
-      }
+      // showSubMenu() {
+      //   let subMenu = document.getElementsByClassName('menu-item-sub')[this.index];
+      //   subMenu.style.display = subMenu.style.display === 'none' ? 'block' : 'none';
+      //   // alert("sdfsdf")
+      // }
     },
     computed: {
       selectedClass() {
-        return {'menu-item-selected': this.$route.path.indexOf(this.path) === -1? false : true};
+        // alert(this.$store.state.menuIndex === 0)
+        // alert(this.index == 0)
+        return {'menu-item-selected': this.$store.state.menuIndex == this.index ? true : false};
       }
     }
   }
@@ -90,9 +92,9 @@
     }
 
     .menu-item-sub {
-      display: block;
+      display: none;
       width: 100%;
-      height: 40px;
+      /*height: 40px;*/
     }
   }
 
@@ -107,6 +109,10 @@
 
   .menu-item-selected {
     background-color: #e6e7ea;
+
+    .menu-item-sub {
+      display: block;
+    }
 
     .menu-item-line {
       background-color: #42b983;

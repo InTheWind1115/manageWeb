@@ -1,5 +1,5 @@
 <template>
-  <div class="submenu" @click="changeRouter">
+  <div class="submenu" @click="changeRouter" :class="submenuClass">
     {{title}}
   </div>
 </template>
@@ -19,8 +19,12 @@
     },
     methods: {
       changeRouter() {
-        alert(this.path);
         this.$router.push(this.path);
+      }
+    },
+    computed: {
+      submenuClass() {
+        return {'submenu-selected': this.$route.path.indexOf(this.path) === -1 ? false : true}
       }
     }
   }
@@ -38,6 +42,10 @@
   }
 
   .submenu:hover {
+    color: #41b580;
+  }
+
+  .submenu-selected {
     color: #41b580;
   }
 </style>

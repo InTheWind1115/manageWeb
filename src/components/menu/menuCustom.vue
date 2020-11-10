@@ -2,8 +2,18 @@
   <div class="menu-root">
     <div class="menu">
       <menu-logo></menu-logo>
-      <menu-item path="/index/home" icon="" name="权限管理" index=0></menu-item>
-<!--      <menu-item path="/index/cc" icon="" name="权限管hjh理" index="1"></menu-item>-->
+      <menu-item path="/index/home" icon="" name="常用信息管理" index=0>
+        <template v-slot:body>
+          <sub-menu path="/index/module1page1" title="用户群"></sub-menu>
+          <sub-menu path="/index/module1page2" title="单个用户"></sub-menu>
+        </template>
+      </menu-item>
+      <menu-item path="/index/cc" icon="" name="用户管理" index="1">
+        <template v-slot:body>
+          <sub-menu path="/index/module2page1" title="用户群"></sub-menu>
+          <sub-menu path="/index/module2page2" title="单个用户"></sub-menu>
+        </template>
+      </menu-item>
 <!--      <menu-item path="/789" icon="" name="权限管j理" index="2"></menu-item>-->
 <!--      <menu-item path="/789" icon="" name="权限管j理" index="3"></menu-item>-->
       <menu-profile></menu-profile>
@@ -18,12 +28,14 @@
   import menuItem from "./menuItem/menuItem";
   import menuProfile from "./menuProfile/menuProfile";
   import menuLogo from "./menuLogo/menuLogo";
+  import subMenu from "./subMenu/subMenu";
   export default {
     name: "Menu",
     components: {
       menuItem,
       menuProfile,
-      menuLogo
+      menuLogo,
+      subMenu
     },
     mounted() {
       // this.$router.push('/login')

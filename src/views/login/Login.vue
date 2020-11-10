@@ -26,7 +26,7 @@
         </div>
 
         <div class="login-box-right-footer">
-          <div class="login-box-right-footer-btn">
+          <div class="login-box-right-footer-btn" @click="login">
             登录
           </div>
         </div>
@@ -39,7 +39,12 @@
 
 <script>
   export default {
-    name: "Login"
+    name: "Login",
+    methods: {
+      login() {
+        this.$router.push("/index");
+      }
+    }
   }
 </script>
 
