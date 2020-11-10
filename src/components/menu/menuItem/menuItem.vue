@@ -1,8 +1,16 @@
 <template>
   <div class="menu-item select" @click="changeRouter" :class="selectedClass">
-    <div class="menu-item-line"></div>
-    <div class="menu-item-icon">{{icon}}</div>
-    <div class="menu-item-title">{{name}}</div>
+    <div class="menu-item-title" @click="showSubMenu">
+      <div class="menu-item-line"></div>
+      <div class="menu-item-icon">{{icon}}</div>
+      <div class="menu-item-name">{{name}}</div>
+    </div>
+    <div class="menu-item-sub">
+      <div>sdfsdf</div>
+      <div>sdfsdf</div>
+      <div>sdfsdf</div>
+      <div>sdfsdf</div>
+    </div>
   </div>
 </template>
 
@@ -26,6 +34,9 @@
     methods: {
       changeRouter() {
         this.$router.push(this.path);
+      },
+      showSubMenu() {
+        let
       }
     },
     computed: {
@@ -38,32 +49,39 @@
 
 <style scoped lang="less">
   .menu-item {
-    height: 50px;
     box-sizing: border-box;
-    display: flex;
-    justify-content: flex-start;
-
-    .menu-item-line {
-      width: 4px;
-      height: 100%;
-      /*background-color: #ffffff;*/
-    }
-
-    .menu-item-icon {
-      font-family: 'icomoon';
-      color: #5c5c5c;
-      box-sizing: border-box;
-      padding-left: 15px;
-      padding-right: 10px;
-      line-height: 50px;
-      font-size: 13px;
-    }
 
     .menu-item-title {
-      color: #5c5c5c;
-      font-size: 13px;
-      font-weight: 600;
-      line-height: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: flex-start;
+
+      .menu-item-line {
+        width: 4px;
+        height: 100%;
+        /*background-color: #ffffff;*/
+      }
+
+      .menu-item-icon {
+        font-family: 'icomoon';
+        color: #5c5c5c;
+        box-sizing: border-box;
+        padding-left: 15px;
+        padding-right: 10px;
+        line-height: 50px;
+        font-size: 13px;
+      }
+
+      .menu-item-name {
+        color: #5c5c5c;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 50px;
+      }
+    }
+
+    .menu-item-sub {
+      display: none;
     }
   }
 
@@ -71,7 +89,7 @@
     cursor: pointer;
 
     .menu-item-icon,
-    .menu-item-title {
+    .menu-item-name {
       color: #000000;
     }
   }
@@ -83,7 +101,7 @@
     }
 
     .menu-item-icon,
-    .menu-item-title {
+    .menu-item-name {
       color: #000000;
     }
   }
