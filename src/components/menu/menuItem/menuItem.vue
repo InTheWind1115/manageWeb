@@ -6,17 +6,20 @@
       <div class="menu-item-name">{{name}}</div>
     </div>
     <div class="menu-item-sub">
-      <div>sdfsdf</div>
-      <div>sdfsdf</div>
-      <div>sdfsdf</div>
-      <div>sdfsdf</div>
+      <slot>
+        <sub-menu path="/index/home/test" title="子菜单栏"></sub-menu>
+      </slot>
     </div>
   </div>
 </template>
 
 <script>
+  import subMenu from "@/components/menu/subMenu/subMenu";
   export default {
     name: "menuItem",
+    components: {
+      subMenu
+    },
     props: {
       path: {
         type: String,
@@ -29,6 +32,10 @@
       name: {
         type: String,
         required: true
+      },
+      index: {
+        type: Number,
+        required: true
       }
     },
     methods: {
@@ -36,7 +43,9 @@
         this.$router.push(this.path);
       },
       showSubMenu() {
-        let
+        let subMenu = document.getElementsByClassName('menu-item-sub')[this.index];
+        subMenu.style.display = subMenu.style.display === 'none' ? 'block' : 'none';
+        // alert("sdfsdf")
       }
     },
     computed: {
@@ -81,7 +90,9 @@
     }
 
     .menu-item-sub {
-      display: none;
+      display: block;
+      width: 100%;
+      height: 40px;
     }
   }
 
@@ -96,13 +107,14 @@
 
   .menu-item-selected {
     background-color: #e6e7ea;
+
     .menu-item-line {
       background-color: #42b983;
     }
 
     .menu-item-icon,
     .menu-item-name {
-      color: #000000;
+      color: #000000!important;
     }
   }
 

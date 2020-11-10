@@ -2,9 +2,10 @@
   <div class="menu-root">
     <div class="menu">
       <menu-logo></menu-logo>
-      <menu-item path="/index/home" icon="" name="权限管理"></menu-item>
-      <menu-item path="/index/cc" icon="" name="权限管理"></menu-item>
-      <menu-item path="/789" icon="" name="权限管理"></menu-item>
+      <menu-item path="/index/home" icon="" name="权限管理" index=0></menu-item>
+<!--      <menu-item path="/index/cc" icon="" name="权限管hjh理" index="1"></menu-item>-->
+<!--      <menu-item path="/789" icon="" name="权限管j理" index="2"></menu-item>-->
+<!--      <menu-item path="/789" icon="" name="权限管j理" index="3"></menu-item>-->
       <menu-profile></menu-profile>
     </div>
     <div class="content">
