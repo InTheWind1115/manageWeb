@@ -101,7 +101,7 @@ body {
     left: 0;
 
     .module1-container {
-      display: flex;
+      display: block;
       width: 100%;
       height: 100%;
 
@@ -111,26 +111,78 @@ body {
         background-color: #41b580;
 
         .module1-container-header-title {
-          font-size: 19px;
-          font-weight: 600;
+          margin-left: 20px;
+          font-size: 20px;
+          line-height: 260%;
           color: white;
           text-align: left;
         }
       }
       .module1-container-body {
+        float: left;
+
         .module1-container-body-form-horizental-sl {
+          margin-top: 30px;
           .module1-container-body-form-horizental-sl-form-group-first {
-            float: left;
+            width: 100%;
+            margin-left: 25px;
+
+            .module1-container-body-form-horizental-sl-form-group-first-choose {
+              width: 200px;
+            }
           }
           .module1-container-body-form-horizental-sl-form-group-second {
-            float: left;
+            width: 100%;
+            margin-left: 25px;
+            margin-top: 10px;
+
+            .module1-container-body-form-horizental-sl-form-group-second-choose {
+              width: 200px;
+            }
           }
           .module1-container-body-form-horizental-sl-form-group-third {
-            float: left;
+            width: 100%;
+            margin-left: 25px;
+            margin-top: 10px;
+
+            .module1-container-body-form-horizental-sl-form-group-third-choose {
+              width: 200px;
+            }
           }
           .module1-container-body-form-horizental-sl-form-group-button {
-            float: left;
+            width: 100%;
+            margin-top: 20px;
+            margin-left: 25px;
+            margin-bottom: 30px;
           }
+
+          .module1-container-body-form-horizental-sl-form-group-forth {
+            width: 100%;
+            margin-left: 25px;
+            margin-top: 10px;
+
+            .module1-container-body-form-horizental-sl-form-group-forth-choose {
+              width: 200px;
+            }
+          }
+
+          .module1-container-body-form-horizental-sl-form-group-button2 {
+            width: 100%;
+            margin-top: 20px;
+            margin-left: 25px;
+            margin-bottom: 30px;
+          }
+        }
+      }
+
+      .module1-container-list {
+        width: 80%;
+        margin-top: 180px;
+        margin-left: 35px;
+
+        .module1-container-list-table {
+          border-style: solid;
+          border-color: #babcbe;
         }
       }
     }
@@ -228,10 +280,10 @@ body {
         float: left;
 
         .module1-container-list-table {
-          width: 1350px;
+          width: 1000px;
           margin-left: 100px;
           border-style: solid;
-          border-color: #41b580;
+          border-color: #babcbe;
 
           .module1-container-list-table-thead {
 

@@ -63,7 +63,7 @@ body {
     left: 0;
 
     .module1-container {
-      display: flex;
+      display: block;
       width: 100%;
       height: 100%;
 
@@ -72,11 +72,46 @@ body {
         height: 60px;
         background-color: #41b580;
 
+
         .module1-container-header-title {
-          font-size: 19px;
-          font-weight: 600;
+          margin-left: 20px;
+          font-size: 20px;
+          line-height: 260%;
           color: white;
           text-align: left;
+        }
+      }
+      .module1-container-body {
+        width: 80%;
+        margin-left: 35px;
+        margin-top: 50px;
+
+        .module1-container-body-form-horizental-sl {
+
+          .module1-container-body-form-horizental-sl-form-group {
+
+            .module1-container-body-form-horizental-sl-form-group-input {
+
+              .module1-container-body-form-horizental-sl-form-group-input-box {
+                margin-top: 10px;
+                margin-bottom: 20px;
+              }
+            }
+
+            .module1-container-body-form-horizental-sl-form-group-button {
+              margin-bottom: 40px;
+            }
+          }
+        }
+      }
+
+      .module1-container-list {
+        width: 80%;
+        margin-left: 35px;
+
+        .module1-container-list-table {
+          border-style: solid;
+          border-color: #babcbe;
         }
       }
     }
@@ -147,10 +182,10 @@ body {
         float: left;
 
         .module1-container-list-table {
-          width: 1350px;
+          width: 1000px;
           margin-left: 100px;
           border-style: solid;
-          border-color: #41b580;
+          border-color: #babcbe;
 
           .module1-container-list-table-thead {
 
