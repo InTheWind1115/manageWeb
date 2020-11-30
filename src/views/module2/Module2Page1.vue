@@ -1,13 +1,247 @@
 <template>
-  <div>模块2页面1</div>
+  <div class="module1">
+    <div class="module1-container">
+      <div class="module1-container-header">
+        <div class="module1-container-header-title">用户群管理</div>
+      </div>
+      <div class="module1-container-body">
+        <div class="module1-container-body-form-horizental-sl">
+          <div class="module1-container-body-form-horizental-sl-form-group">
+            <div class="module1-container-body-form-horizental-sl-form-group-first">
+              <label class="module1-container-body-form-horizental-sl-form-group-first-title">身份  </label>
+              <select class="module1-container-body-form-horizental-sl-form-group-first-choose">
+                <option value>全部</option>
+                <option>学校管理员</option>
+                <option>部门管理员</option>
+                <option>教师</option>
+                <option>学生</option>
+              </select>
+            </div>
+            <div class="module1-container-body-form-horizental-sl-form-group-second">
+              <label class="module1-container-body-form-horizental-sl-form-group-second-title">学院  </label>
+              <select class="module1-container-body-form-horizental-sl-form-group-second-choose">
+                <option value>全部</option>
+                <option>学校管理员</option>
+                <option>部门管理员</option>
+                <option>教师</option>
+                <option>学生</option>
+              </select>
+            </div>
+            <div class="module1-container-body-form-horizental-sl-form-group-third">
+              <label class="module1-container-body-form-horizental-sl-form-group-third-title">专业  </label>
+              <select class="module1-container-body-form-horizental-sl-form-group-third-choose">
+                <option value>全部</option>
+                <option>学校管理员</option>
+                <option>部门管理员</option>
+                <option>教师</option>
+                <option>学生</option>
+              </select>
+            </div>
+            <div class="module1-container-body-form-horizental-sl-form-group-button">
+              <button class="module1-container-body-form-horizental-sl-form-group-button-title">  查 询  </button>
+            </div>
+            <div class="module1-container-body-form-horizental-sl-form-group-forth">
+              <label class="module1-container-body-form-horizental-sl-form-group-forth-title">权限  </label>
+              <select class="module1-container-body-form-horizental-sl-form-group-forth-choose">
+                <option value>全部</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+            <div class="module1-container-body-form-horizental-sl-form-group-button2">
+              <button class="module1-container-body-form-horizental-sl-form-group-button2-title">  添 加  </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="module1-container-list">
+        <table class="module1-container-list-table">
+          <thead class="module1-container-list-table-thead">
+          <tr class="module1-container-list-table-thead-tr">
+            <th>ID</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>人员编号</th>
+            <th>身份</th>
+          </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-  export default {
-    name: "Module1Page1"
+
+export default {
+  name: "Module2Page1",
+  methods:{
+
   }
+}
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .module1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
 
+    .module1-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+
+      .module1-container-header {
+        width: 100%;
+        height: 60px;
+        background-color: #41b580;
+
+        .module1-container-header-title {
+          font-size: 19px;
+          font-weight: 600;
+          color: white;
+          text-align: left;
+        }
+      }
+      .module1-container-body {
+        .module1-container-body-form-horizental-sl {
+          .module1-container-body-form-horizental-sl-form-group-first {
+            float: left;
+          }
+          .module1-container-body-form-horizental-sl-form-group-second {
+            float: left;
+          }
+          .module1-container-body-form-horizental-sl-form-group-third {
+            float: left;
+          }
+          .module1-container-body-form-horizental-sl-form-group-button {
+            float: left;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .module1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    .module1-container{
+      width: 100%;
+      height: 100%;
+
+      .module1-container-header {
+        width: 100%;
+        height: 60px;
+        background-color: #41b580;
+
+        .module1-container-header-title {
+          margin-left: 20px;
+          font-size: 20px;
+          line-height: 260%;
+          color: white;
+          text-align: left;
+        }
+      }
+      .module1-container-body {
+        width: 100%;
+        margin-left: 50px;
+
+        .module1-container-body-form-horizental-sl {
+          width: 100%;
+
+          .module1-container-body-form-horizental-sl-form-group-first {
+            margin: 50px;
+            float: left;
+
+            .module1-container-body-form-horizental-sl-form-group-first-choose {
+              box-sizing: border-box;
+              width: 150px;
+            }
+          }
+          .module1-container-body-form-horizental-sl-form-group-second {
+            margin: 50px;
+            float: left;
+
+            .module1-container-body-form-horizental-sl-form-group-second-choose {
+              box-sizing: border-box;
+              width: 150px;
+            }
+          }
+          .module1-container-body-form-horizental-sl-form-group-third {
+            margin: 50px;
+            float: left;
+
+            .module1-container-body-form-horizental-sl-form-group-third-choose {
+              box-sizing: border-box;
+              width: 150px;
+            }
+          }
+
+          .module1-container-body-form-horizental-sl-form-group-button {
+            margin: 50px;
+            float: left;
+          }
+
+          .module1-container-body-form-horizental-sl-form-group-forth {
+            margin: 50px;
+            float: left;
+
+            .module1-container-body-form-horizental-sl-form-group-forth-choose {
+              box-sizing: border-box;
+              width: 150px;
+            }
+          }
+
+          .module1-container-body-form-horizental-sl-form-group-button2 {
+            margin: 50px;
+            float: left;
+          }
+        }
+
+      }
+
+      .module1-container-list {
+        width: 100%;
+        float: left;
+
+        .module1-container-list-table {
+          width: 1350px;
+          margin-left: 100px;
+          border-style: solid;
+          border-color: #41b580;
+
+          .module1-container-list-table-thead {
+
+            .module1-container-list-table-thead-tr {
+              width: 100px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 </style>
