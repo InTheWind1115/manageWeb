@@ -12,6 +12,24 @@
         <template v-slot:body>
           <sub-menu path="/index/module2page1" title="用户群"></sub-menu>
           <sub-menu path="/index/module2page2" title="单个用户"></sub-menu>
+          <sub-menu path="/index/module2page3" title="添加用户"></sub-menu>
+        </template>
+      </menu-item>
+      <menu-item path="/index/cc" icon="" name="表格管理" index="2">
+        <template v-slot:body>
+          <sub-menu path="/index/module3page1" title="表格发布"></sub-menu>
+        </template>
+      </menu-item>
+      <menu-item path="/index/home" icon="" name="信息收集模块" index=3>
+        <template v-slot:body>
+          <sub-menu path="/index/module4page1" title="我收到的"></sub-menu>
+          <sub-menu path="/index/module4page2" title="我发布的"></sub-menu>
+        </template>
+      </menu-item>
+      <menu-item path="/index/home" icon="" name="数据浏览与查询" index=4>
+        <template v-slot:body>
+          <sub-menu path="/index/module5page1" title="我收到的"></sub-menu>
+          <sub-menu path="/index/module5page2" title="我发布的"></sub-menu>
         </template>
       </menu-item>
 <!--      <menu-item path="/789" icon="" name="权限管j理" index="2"></menu-item>-->

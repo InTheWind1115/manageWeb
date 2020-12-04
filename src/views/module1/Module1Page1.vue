@@ -21,10 +21,8 @@
               <label class="module1-container-body-form-horizental-sl-form-group-second-title">学院  </label>
               <select class="module1-container-body-form-horizental-sl-form-group-second-choose">
                 <option value>全部</option>
-                <option>学校管理员</option>
-                <option>部门管理员</option>
-                <option>教师</option>
-                <option>学生</option>
+                <option>计算机科学与技术学院</option>
+                <option>马克思主义学院</option>
               </select>
             </div>
             <div class="module1-container-body-form-horizental-sl-form-group-third">
