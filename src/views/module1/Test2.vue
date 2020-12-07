@@ -9,13 +9,20 @@
         <div class="body-header-btn" @click="getUserData">查询</div>
       </div>
       <div class="body-show">
-        <table>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
+        <table style="border-collapse: collapse">
+          <tr class="body-show-tr">
+            <td>ID</td>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>人员编号</td>
+            <td>身份</td>
+          </tr>
+          <tr class="body-show-tr">
+            <td>01</td>
+            <td>权纯洋</td>
+            <td>女</td>
+            <td>2018210</td>
+            <td>学生</td>
           </tr>
         </table>
       </div>
@@ -54,7 +61,54 @@
 </script>
 
 <style scoped lang="less">
+
+  .header {
+    width: 100%;
+    height: 60px;
+    background-color: #536847;
+    font-size: 20px;
+    line-height: 260%;
+    color: white;
+    text-align: left;
+    padding-left: 30px;
+  }
+
+  .body-header {
+    margin: 50px;
+    font-size: large;
+  }
+
+  .body-header-input {
+    margin-left: 400px;
+    width: 300px;
+  }
+
+  .body-header-btn {
+    font-size: 18px;
+    float: right;
+    background-color: #777777;
+    color: white;
+    text-align: center;
+    padding: 5px 15px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-right: 600px;
+  }
+
   .body-header-btn:hover {
+    background-color: #555555;
     cursor: pointer;
+  }
+
+  .body-show {
+    width: 80%;
+    text-align: center;
+    font-size: large;
+    margin-left: 200px;
+  }
+
+  .body-show-tr td{
+    width: 190px;
+    border: #5c5c5c 1px solid;
   }
 </style>

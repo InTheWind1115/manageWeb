@@ -6,27 +6,34 @@
     <div class="body">
       <div class="body-header">
         身份
-        <select name="" v-model="status">
+        <select class="selections" name="" v-model="status">
           <option :value="user.value" v-bind:key="user.value" v-for="user in users">{{user.name}}</option>
         </select>
         学院
-        <select name="" v-model="department" @change="changeAcademy">
+        <select class="selections" name="" v-model="department" @change="changeAcademy">
           <option :value="department.value" v-bind:key="department.value" v-for="department in departments">{{department.name}}</option>
         </select>
         专业
-        <select name="" v-model="academy">
+        <select class="selections" name="" v-model="academy">
           <option :value="academy.value" v-bind:key="academy.value" v-for="academy in academies[selected]">{{academy.name}}</option>
         </select>
         <div class="body-header-btn" @click="getUsersData">查询</div>
       </div>
       <div class="body-show">
-        <table>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
+        <table style="border-collapse: collapse">
+          <tr class="body-show-tr">
+            <td>ID</td>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>人员编号</td>
+            <td>身份</td>
+          </tr>
+          <tr  class="body-show-tr">
+            <td>01</td>
+            <td>权纯洋</td>
+            <td>女</td>
+            <td>2018210</td>
+            <td>学生</td>
           </tr>
         </table>
       </div>
@@ -158,10 +165,71 @@
   }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
+  .box-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  .header {
+    width: 100%;
+    height: 60px;
+    background-color: #536847;
+    font-size: 20px;
+    line-height: 260%;
+    color: white;
+    text-align: left;
+    padding-left: 30px;
+  }
+
+  .body {
+    width: 80%;
+    text-align: center;
+  }
+
+  .body-header {
+    margin: 50px;
+    font-size: large;
+  }
+
+  .selections {
+    margin-left: 10px;
+    margin-right: 80px;
+    width: 200px;
+  }
+
+  .body-header-btn {
+    font-size: 18px;
+    float: right;
+    background-color: #777777;
+    color: white;
+    text-align: center;
+    padding: 5px 15px;
+    display: inline-block;
+    border-radius: 5px;
+  }
 
   .body-header-btn:hover {
+    background-color: #555555;
     cursor: pointer;
+  }
+
+  .body-show {
+    width: 80%;
+    text-align: center;
+    font-size: large;
+    margin-left: 200px;
+  }
+
+  .body-show-tr td{
+    width: 190px;
+    border: #5c5c5c 1px solid;
   }
 
 </style>
