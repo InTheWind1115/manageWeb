@@ -14,13 +14,13 @@
         <div class="login-box-right-body">
           <div class="login-box-right-body-box1">
             <div class="login-box-right-body-username">用户名</div>
-            <input class="login-box-right-body-username-input" placeholder="请输入账号"/>
-            <div class="login-box-right-body-box1-hint">用户名错误</div>
+            <input class="login-box-right-body-username-input" placeholder="请输入账号" v-model="usrname"/>
+            <div class="login-box-right-body-box1-hint"></div>
           </div>
           <div class="login-box-right-body-box2">
             <div class="login-box-right-body-pwd">密码</div>
-            <input class="login-box-right-body-pwd-input" placeholder="请输入密码"/>
-            <div class="login-box-right-body-box2-hint">密码错误</div>
+            <input type="password" class="login-box-right-body-pwd-input" placeholder="请输入密码" v-model="usrpwd" @change="pwdChange"/>
+            <div class="login-box-right-body-box2-hint"></div>
           </div>
           <span class="login-box-right-body-forget">忘记密码?</span>
         </div>
@@ -40,10 +40,39 @@
 <script>
   export default {
     name: "Login",
+    data() {
+      return {
+        usrname: "",
+        usrpwd: ''
+      }
+    },
     methods: {
       login() {
-        this.$router.push("/index");
+        let _this = this;
+        _this.$myRequest({
+          url: 'login',
+          method: 'post',
+          data: {
+            username: _this.usrname,
+            password: _this.usrpwd
+          }
+        }).then(res => {
+          let data = res.data;
+          if (data['success'] === true) {
+            _this.$router.push('/index');
+          } else {
+            let infoEle = document.getElementsByClassName('login-box-right-body-box2-hint')[0];
+            infoEle.innerText = data['message'];
+          }
+        }).catch(err => {
+          console.log(err);
+        })
+        // this.$router.push("/index");
+      },
+      pwdChange() {
+        document.getElementsByClassName('login-box-right-body-box2-hint')[0].innerText = "";
       }
+
     }
   }
 </script>

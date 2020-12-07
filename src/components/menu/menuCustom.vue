@@ -6,6 +6,8 @@
         <template v-slot:body>
           <sub-menu path="/index/module1page1" title="用户群"></sub-menu>
           <sub-menu path="/index/module1page2" title="单个用户"></sub-menu>
+          <sub-menu path="/index/test1" title="用户群测试"></sub-menu>
+          <sub-menu path="/index/test2" title="单个用户测试"></sub-menu>
         </template>
       </menu-item>
       <menu-item path="/index/cc" icon="" name="用户管理" index="1">
@@ -13,11 +15,14 @@
           <sub-menu path="/index/module2page1" title="用户群"></sub-menu>
           <sub-menu path="/index/module2page2" title="单个用户"></sub-menu>
           <sub-menu path="/index/module2page3" title="添加用户"></sub-menu>
+          <sub-menu path="/index/module2test1" title="用户群测试"></sub-menu>
+          <sub-menu path="/index/module2test2" title="单个用户测试"></sub-menu>
         </template>
       </menu-item>
       <menu-item path="/index/cc" icon="" name="表格管理" index="2">
         <template v-slot:body>
-          <sub-menu path="/index/module3page1" title="表格发布"></sub-menu>
+          <sub-menu path="/index/module3page1" title="单个用户"></sub-menu>
+          <sub-menu path="/index/module3page2" title="多个用户"></sub-menu>
         </template>
       </menu-item>
       <menu-item path="/index/home" icon="" name="信息收集模块" index=3>

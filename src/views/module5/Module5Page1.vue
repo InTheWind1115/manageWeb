@@ -1,11 +1,11 @@
 <template>
-<div>m3 p1</div>
+  <div>m5 p1</div>
 </template>
 
 <script>
-export default {
-name: "Module3Page1"
-}
+  export default {
+    name: "Module5Page1"
+  }
 </script>
 
 <style scoped>
