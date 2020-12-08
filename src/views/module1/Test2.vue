@@ -17,13 +17,7 @@
             <td>人员编号</td>
             <td>身份</td>
           </tr>
-          <tr class="body-show-tr-info body-show-tr">
-            <td>0</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          <tr class="body-show-tr-info body-show-tr"></tr>
         </table>
       </div>
     </div>
@@ -90,7 +84,11 @@
 
   .body-header-input {
     margin-left: 400px;
-    width: 300px;
+    width: 200px;
+    height: 20px;
+    outline: none;
+    font-size: 15px;
+    text-indent: 2px;
   }
 
   .body-header-btn {
@@ -102,7 +100,7 @@
     padding: 5px 15px;
     display: inline-block;
     border-radius: 5px;
-    margin-right: 20%;
+    margin-right: 40%;
   }
 
   .body-header-btn:hover {
