@@ -1,5 +1,5 @@
 <template>
-  <div class="box select">
+  <div class="box3-2 select">
     <div class="header">
       向多个用户发送表格
     </div>
@@ -169,6 +169,71 @@
 
 <style scoped lang="less">
 
+  .box3-2 {
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    .header {
+      width: 100%;
+      height: 60px;
+      background-color: #41b580;
+      font-size: 20px;
+      line-height: 260%;
+      color: white;
+      text-align: left;
+      padding-left: 30px;
+    }
+
+    .body {
+      width: 800px;
+      /*background-color: #42b983;*/
+      margin: 0 auto;
+
+      .body-header {
+        margin-top: 20px;
+        position: relative;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 17px;
+
+        .body-header-btn {
+          position: absolute;
+          height: 30px;
+          width: 50px;
+          left: 610px;
+          font-size: 18px;
+          background-color: #777777;
+          color: white;
+          text-align: center;
+          display: inline-block;
+          border-radius: 5px;
+          &:hover {
+            background-color: #555555;
+            cursor: pointer;
+          }
+
+        }
+      }
+
+      .body-show {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+
+        .body-show-input {
+          width: 200px;
+          height: 20px;
+          outline: none;
+          font-size: 15px;
+          text-indent: 2px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+  }
   .body-header-btn:hover {
     cursor: pointer;
   }
