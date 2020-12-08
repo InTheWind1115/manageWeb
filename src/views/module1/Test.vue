@@ -1,5 +1,5 @@
 <template>
-  <div class="box select">
+  <div class="box1-1 select">
     <div class="header">
       用户群常用信息管理
     </div>
@@ -27,6 +27,7 @@
             <td>性别</td>
             <td>人员编号</td>
             <td>身份</td>
+            <td>详细信息</td>
           </tr>
           <tr  class="body-show-tr">
             <td>01</td>
@@ -34,6 +35,7 @@
             <td>女</td>
             <td>2018210</td>
             <td>学生</td>
+            <td><button>详情</button></td>
           </tr>
         </table>
       </div>
@@ -166,70 +168,64 @@
 </script>
 
 <style lang="less" scoped>
-  .box-select {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+  .box1-1 {
     width: 100%;
-    height: 100%;
-    position: relative;
     top: 0;
     left: 0;
-  }
 
-  .header {
-    width: 100%;
-    height: 60px;
-    background-color: #536847;
-    font-size: 20px;
-    line-height: 260%;
-    color: white;
-    text-align: left;
-    padding-left: 30px;
-  }
+    .header {
+      width: 100%;
+      height: 60px;
+      background-color: #536847;
+      font-size: 20px;
+      line-height: 260%;
+      color: white;
+      text-align: left;
+      padding-left: 30px;
+    }
 
-  .body {
-    width: 80%;
-    text-align: center;
-  }
+    .body {
+      width: 90%;
+      text-align: center;
 
-  .body-header {
-    margin: 50px;
-    font-size: large;
-  }
+      .body-header {
+        margin: 50px;
+        font-size: large;
 
-  .selections {
-    margin-left: 10px;
-    margin-right: 80px;
-    width: 200px;
-  }
+        .selections {
+          margin-left: 10px;
+          margin-right: 50px;
+          width: 120px;
+        }
 
-  .body-header-btn {
-    font-size: 18px;
-    float: right;
-    background-color: #777777;
-    color: white;
-    text-align: center;
-    padding: 5px 15px;
-    display: inline-block;
-    border-radius: 5px;
-  }
+        .body-header-btn {
+          font-size: 18px;
+          background-color: #777777;
+          color: white;
+          text-align: center;
+          padding: 5px 15px;
+          display: inline-block;
+          border-radius: 5px;
+          &:hover {
+            background-color: #555555;
+            cursor: pointer;
+          }
+        }
+      }
 
-  .body-header-btn:hover {
-    background-color: #555555;
-    cursor: pointer;
-  }
+      .body-show {
+        width: 70%;
+        text-align: center;
+        font-size: large;
+        margin-left: 170px;
 
-  .body-show {
-    width: 80%;
-    text-align: center;
-    font-size: large;
-    margin-left: 200px;
-  }
-
-  .body-show-tr td{
-    width: 190px;
-    border: #5c5c5c 1px solid;
+        .body-show-tr td{
+          width: 190px;
+          border: #5c5c5c 1px solid;
+        }
+      }
+    }
   }
 
 </style>

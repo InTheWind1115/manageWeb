@@ -1,5 +1,5 @@
 <template>
-  <div class="box select">
+  <div class="box1-2 select">
     <div class="header">
       单个用户常用信息管理
     </div>
