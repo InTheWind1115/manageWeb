@@ -1,37 +1,44 @@
 <template>
-  <div class="box select">
+  <div class="box2-1 select">
     <div class="header">
       用户群常用信息管理
     </div>
     <div class="body">
       <div class="body-header">
         身份
-        <select name="" v-model="status">
+        <select class="selections" name="" v-model="status">
           <option :value="user.value" v-bind:key="user.value" v-for="user in users">{{user.name}}</option>
         </select>
         学院
-        <select name="" v-model="department" @change="changeAcademy">
+        <select class="selections" name="" v-model="department" @change="changeAcademy">
           <option :value="department.value" v-bind:key="department.value" v-for="department in departments">{{department.name}}</option>
         </select>
         专业
-        <select name="" v-model="academy">
+        <select class="selections" name="" v-model="academy">
           <option :value="academy.value" v-bind:key="academy.value" v-for="academy in academies[selected]">{{academy.name}}</option>
         </select>
         <div class="body-header-btn" @click="getUsersData">查询</div>
         权限
-        <select name="" v-model="limit">
+        <select class="selections" name="" v-model="limit">
           <option :value="limit.value" v-bind:key="limit.value" v-for="limit in limits">{{limit.name}}</option>
         </select>
         <div class="body-header-insert-btn" @click="updateUsersLimit">添加</div>
       </div>
       <div class="body-show">
-        <table>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
+        <table style="border-collapse: collapse" class="body-show-table">
+          <tr class="body-show-tr">
+            <td>ID</td>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>人员编号</td>
+            <td>身份</td>
+          </tr>
+          <tr class="body-show-tr">
+            <td>01</td>
+            <td>权纯洋</td>
+            <td>女</td>
+            <td>2018210119</td>
+            <td>学生</td>
           </tr>
         </table>
       </div>
@@ -205,12 +212,83 @@
 
 <style scoped lang="less">
 
-  .body-header-btn:hover {
-    cursor: pointer;
-  }
+  .box2-1 {
 
-  .body-header-insert-btn {
-    cursor: pointer;
+    .header {
+      width: 100%;
+      height: 60px;
+      background-color: #41b580;
+      font-size: 20px;
+      line-height: 260%;
+      color: white;
+      text-align: left;
+      box-sizing: border-box;
+      padding-left: 30px;
+    }
+
+    .body {
+      width: 800px;
+      /*background-color: #42b983;*/
+      margin: 0 auto;
+
+      .body-header {
+        margin-top: 20px;
+        position: relative;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 17px;
+
+        .selections {
+          width: 115px;
+        }
+
+        .body-header-btn {
+          position: absolute;
+          height: 30px;
+          width: 50px;
+          left: 645px;
+          font-size: 18px;
+          background-color: #777777;
+          color: white;
+          text-align: center;
+          display: inline-block;
+          border-radius: 5px;
+          &:hover {
+            background-color: #555555;
+            cursor: pointer;
+          }
+        }
+
+        .body-header-insert-btn {
+          position: absolute;
+          height: 30px;
+          width: 50px;
+          left: 698px;
+          font-size: 18px;
+          background-color: #777777;
+          color: white;
+          text-align: center;
+          display: inline-block;
+          border-radius: 5px;
+          &:hover {
+            background-color: #555555;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .body-show {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+
+        .body-show-tr td {
+          width: 190px;
+          border: #5c5c5c 1px solid;
+        }
+      }
+    }
   }
 
 </style>
