@@ -1,5 +1,5 @@
 <template>
-  <div class="box select">
+  <div class="box1-2 select">
     <div class="header">
       单个用户常用信息管理
     </div>
@@ -55,11 +55,13 @@
           let result = res.data.result;
           let tableTd = document.getElementsByClassName('body-show-tr-info')[0];
           console.log(result);
-          tableTd.innerHTML = `<td>0</td>
+          this.$nextTick(function () {
+            tableTd.innerHTML = `<td>0</td>
             <td>${result.name}</td>
             <td>${result.sex === 0 ? '男' : '女'}</td>
             <td>${result.userId}</td>
             <td>${result.position}</td>`
+          })
         }).catch(err => {
           console.log(err);
         })
@@ -68,7 +70,7 @@
   }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 
   .header {
     width: 100%;
@@ -100,7 +102,7 @@
     padding: 5px 15px;
     display: inline-block;
     border-radius: 5px;
-    margin-right: 600px;
+    margin-right: 20%;
   }
 
   .body-header-btn:hover {
