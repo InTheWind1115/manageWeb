@@ -28,7 +28,7 @@
       <menu-item path="/index/home" icon="" name="信息收集模块" index=3>
         <template v-slot:body>
           <sub-menu path="/index/module4page1" title="我收到的"></sub-menu>
-          <sub-menu path="/index/module4page2" title="我发布的"></sub-menu>
+          <sub-menu path="/index/module4page2" title="查询填写情况"></sub-menu>
         </template>
       </menu-item>
       <menu-item path="/index/home" icon="" name="数据浏览与查询" index=4>

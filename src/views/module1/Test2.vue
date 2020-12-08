@@ -9,7 +9,7 @@
         <div class="body-header-btn" @click="getUserData">查询</div>
       </div>
       <div class="body-show">
-        <table style="border-collapse: collapse">
+        <table style="border-collapse: collapse" class="body-show-table">
           <tr class="body-show-tr">
             <td>ID</td>
             <td>姓名</td>
@@ -17,12 +17,12 @@
             <td>人员编号</td>
             <td>身份</td>
           </tr>
-          <tr class="body-show-tr">
-            <td>01</td>
-            <td>权纯洋</td>
-            <td>女</td>
-            <td>2018210</td>
-            <td>学生</td>
+          <tr class="body-show-tr-info body-show-tr">
+            <td>0</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </table>
       </div>
@@ -45,13 +45,21 @@
           url: 'manageuserinfo',
           method: 'get',
           headers: {
-            Authorization: 'Bearer eyJhbGciOiJSUzI1NiJ9.eyJ1c2VyIjoie1wiaWRcIjpudWxsLFwidXNlcm5hbWVcIjpcIjIwMTgyMTAxNzEzMlwiLFwicGFzc3dvcmRcIjpudWxsLFwic3RhdHVzXCI6bnVsbCxcInJvbGVzXCI6W3tcImlkXCI6MyxcInJvbGVOYW1lXCI6XCJST0xFX0FETUlOXCIsXCJyb2xlRGVzY1wiOlwiREVQQVJUTUVOVFwifV19IiwianRpIjoiT0RVd056UTVORFF0WW1GaU15MDBOREExTFdJMFpXRXROalEyTm1FeU5XWmtaVE5tIiwiZXhwIjoxNjA3NDA2MTIxfQ.XaGWJXugsuk8VrbTxnt3vBSq1aB5zOGJECbPZkQHVZEWXfv9wlgZ5tJm39ZTvZJy8t3ehu8gIe-D71J2GvJlZSUW8wQQ-m3n4AgwEo70YmuANpBnU0-yvLHUjNEWWgFFPB5ASAMLML7zxZi2bx-rYYDqvM1wCuHWobzaH3HPDmm4VfW_yDisvJdc3mtO-PLL0_Mnia_U67gz-YwdsVN5Lum_lyCs29exl1SC9PQpoZcsWBe4Amcw79ZGmQaXCKvtuZdXTuvZFzPKOh-UfsCinoFRoram1SY1b2_uds2_SYeDp4MYoty5nIlzB9_UUabtqJcM_d2TI-b2ymwC2LTiSA'
+            Authorization: _this.$store.state.token
           },
           params: {
             userid: _this.userId,
           }
         }).then( res => {
           console.log(res);
+          let result = res.data.result;
+          let tableTd = document.getElementsByClassName('body-show-tr-info')[0];
+          console.log(result);
+          tableTd.innerHTML = `<td>0</td>
+            <td>${result.name}</td>
+            <td>${result.sex === 0 ? '男' : '女'}</td>
+            <td>${result.userId}</td>
+            <td>${result.position}</td>`
         }).catch(err => {
           console.log(err);
         })
@@ -65,7 +73,7 @@
   .header {
     width: 100%;
     height: 60px;
-    background-color: #536847;
+    background-color: #41b580;
     font-size: 20px;
     line-height: 260%;
     color: white;
