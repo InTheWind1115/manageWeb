@@ -191,10 +191,6 @@
 <style lang="less">
 
   .box1-1 {
-    width: 100%;
-    top: 0;
-    left: 0;
-
     .header {
       width: 100%;
       height: 60px;
@@ -203,16 +199,22 @@
       line-height: 260%;
       color: white;
       text-align: left;
+      box-sizing: border-box;
       padding-left: 30px;
     }
 
     .body {
-      width: 90%;
-      text-align: center;
+      width: 800px;
+      /*background-color: #42b983;*/
+      margin: 0 auto;
 
       .body-header {
-        margin: 50px;
-        font-size: large;
+        margin-top: 20px;
+        position: relative;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 17px;
 
         .selections {
           margin-left: 10px;
@@ -221,11 +223,14 @@
         }
 
         .body-header-btn {
+          position: absolute;
+          height: 30px;
+          width: 50px;
+          left: 650px;
           font-size: 18px;
           background-color: #777777;
           color: white;
           text-align: center;
-          padding: 5px 15px;
           display: inline-block;
           border-radius: 5px;
           &:hover {
@@ -236,13 +241,12 @@
       }
 
       .body-show {
-        width: 70%;
-        text-align: center;
-        font-size: large;
-        margin-left: 170px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
 
         .body-show-tr td{
-          width: 190px;
+          width: 160px;
           border: #5c5c5c 1px solid;
         }
       }
