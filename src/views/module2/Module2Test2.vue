@@ -23,12 +23,7 @@
             <td>人员编号</td>
             <td>身份</td>
           </tr>
-          <tr class="body-show-tr">
-            <td>01</td>
-            <td>权纯洋</td>
-            <td>女</td>
-            <td>2018210119</td>
-            <td>学生</td>
+          <tr class="body-show-tr body-show-tr-info">
           </tr>
         </table>
       </div>
@@ -80,6 +75,16 @@
           }
         }).then( res => {
           console.log(res);
+          let result = res.data.result;
+          let tableTd = document.getElementsByClassName('body-show-tr-info')[0];
+          console.log(result);
+          this.$nextTick(function () {
+            tableTd.innerHTML = `<td>0</td>
+            <td>${result.name}</td>
+            <td>${result.sex === 0 ? '男' : '女'}</td>
+            <td>${result.userId}</td>
+            <td>${result.position}</td>`
+          })
         }).catch(err => {
           console.log(err);
         })
@@ -90,7 +95,7 @@
           url: 'updateuserlimit',
           method: 'get',
           headers: {
-            Authorization: 'Bearer eyJhbGciOiJSUzI1NiJ9.eyJ1c2VyIjoie1wiaWRcIjpudWxsLFwidXNlcm5hbWVcIjpcIjIwMTgyMTAxNzEzMlwiLFwicGFzc3dvcmRcIjpudWxsLFwic3RhdHVzXCI6bnVsbCxcInJvbGVzXCI6W3tcImlkXCI6MyxcInJvbGVOYW1lXCI6XCJST0xFX0FETUlOXCIsXCJyb2xlRGVzY1wiOlwiREVQQVJUTUVOVFwifV19IiwianRpIjoiT0RVd056UTVORFF0WW1GaU15MDBOREExTFdJMFpXRXROalEyTm1FeU5XWmtaVE5tIiwiZXhwIjoxNjA3NDA2MTIxfQ.XaGWJXugsuk8VrbTxnt3vBSq1aB5zOGJECbPZkQHVZEWXfv9wlgZ5tJm39ZTvZJy8t3ehu8gIe-D71J2GvJlZSUW8wQQ-m3n4AgwEo70YmuANpBnU0-yvLHUjNEWWgFFPB5ASAMLML7zxZi2bx-rYYDqvM1wCuHWobzaH3HPDmm4VfW_yDisvJdc3mtO-PLL0_Mnia_U67gz-YwdsVN5Lum_lyCs29exl1SC9PQpoZcsWBe4Amcw79ZGmQaXCKvtuZdXTuvZFzPKOh-UfsCinoFRoram1SY1b2_uds2_SYeDp4MYoty5nIlzB9_UUabtqJcM_d2TI-b2ymwC2LTiSA'
+            Authorization: _this.$store.state.token
           },
           params: {
             userid: _this.userId,
@@ -106,7 +111,7 @@
   }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
   .box2-2 {
 
     .header {
