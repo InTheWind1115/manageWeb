@@ -16,6 +16,15 @@
             <td>性别</td>
             <td>人员编号</td>
             <td>身份</td>
+            <td>详细信息</td>
+          </tr>
+          <tr class="body-show-tr">
+            <td>01</td>
+            <td>权纯洋</td>
+            <td>女</td>
+            <td>2018210</td>
+            <td>学生</td>
+            <td><button>详情</button></td>
           </tr>
           <tr class="body-show-tr-info body-show-tr"></tr>
         </table>
@@ -66,57 +75,67 @@
 
 <style lang="less">
 
-  .header {
-    width: 100%;
-    height: 60px;
-    background-color: #41b580;
-    font-size: 20px;
-    line-height: 260%;
-    color: white;
-    text-align: left;
-    padding-left: 30px;
+  .box1-2 {
+    .header {
+      width: 100%;
+      height: 60px;
+      background-color: #41b580;
+      font-size: 20px;
+      line-height: 260%;
+      color: white;
+      text-align: left;
+      box-sizing: border-box;
+      padding-left: 30px;
+    }
+
+    .body {
+      width: 800px;
+      /*background-color: #42b983;*/
+      margin: 0 auto;
+
+      .body-header {
+        margin-top: 20px;
+        position: relative;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 17px;
+
+        .body-header-input{
+          width: 200px;
+          height: 20px;
+          outline: none;
+          font-size: 15px;
+          text-indent: 2px;
+        }
+        .body-header-btn {
+          position: absolute;
+          height: 30px;
+          width: 50px;
+          left: 300px;
+          font-size: 18px;
+          background-color: #777777;
+          color: white;
+          text-align: center;
+          display: inline-block;
+          border-radius: 5px;
+          &:hover {
+            background-color: #555555;
+            cursor: pointer;
+          }
+        }
+      }
+      .body-show {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+
+        .body-show-tr td {
+          width: 160px;
+          border: #5c5c5c 1px solid;
+        }
+      }
+    }
   }
 
-  .body-header {
-    margin: 50px;
-    font-size: large;
-  }
-
-  .body-header-input {
-    margin-left: 400px;
-    width: 200px;
-    height: 20px;
-    outline: none;
-    font-size: 15px;
-    text-indent: 2px;
-  }
-
-  .body-header-btn {
-    font-size: 18px;
-    float: right;
-    background-color: #777777;
-    color: white;
-    text-align: center;
-    padding: 5px 15px;
-    display: inline-block;
-    border-radius: 5px;
-    margin-right: 40%;
-  }
-
-  .body-header-btn:hover {
-    background-color: #555555;
-    cursor: pointer;
-  }
-
-  .body-show {
-    width: 80%;
-    text-align: center;
-    font-size: large;
-    margin-left: 200px;
-  }
-
-  .body-show-tr td{
-    width: 190px;
-    border: #5c5c5c 1px solid;
-  }
 </style>
