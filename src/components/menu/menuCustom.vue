@@ -2,24 +2,22 @@
   <div class="menu-root">
     <div class="menu">
       <menu-logo></menu-logo>
-      <menu-item path="/index/home" icon="" name="常用信息管理" index=0>
+      <menu-item path="/index/home" icon="" name="常用信息管理" index=0 v-show="$store.state.role == 'ROLE_ADMIN' || $store.state.role == 'ROLE_SUPERADMIN' || $store.state.role == 'ROLE_TEACHER'">
         <template v-slot:body>
-          <sub-menu path="/index/module1page1" title="用户群"></sub-menu>
-          <sub-menu path="/index/module1page2" title="单个用户"></sub-menu>
-          <sub-menu path="/index/test1" title="用户群测试"></sub-menu>
-          <sub-menu path="/index/test2" title="单个用户测试"></sub-menu>
+          <sub-menu path="/index/test1" title="用户群" :key="1"></sub-menu>
+          <sub-menu path="/index/test2" title="单个用户" :key="2"></sub-menu>
         </template>
       </menu-item>
-      <menu-item path="/index/cc" icon="" name="用户管理" index="1">
+      <menu-item path="/index/cc" icon="" name="用户管理" index=1 v-show="$store.state.role == 'ROLE_ADMIN' || $store.state.role == 'ROLE_SUPERADMIN'">
         <template v-slot:body>
-          <sub-menu path="/index/module2page1" title="用户群"></sub-menu>
-          <sub-menu path="/index/module2page2" title="单个用户"></sub-menu>
-          <sub-menu path="/index/module2page3" title="添加用户"></sub-menu>
-          <sub-menu path="/index/module2test1" title="用户群测试"></sub-menu>
-          <sub-menu path="/index/module2test2" title="单个用户测试"></sub-menu>
+<!--          <sub-menu path="/index/module2page1" title="用户群"></sub-menu>-->
+<!--          <sub-menu path="/index/module2page2" title="单个用户"></sub-menu>-->
+<!--          <sub-menu path="/index/module2page3" title="添加用户"></sub-menu>-->
+          <sub-menu path="/index/module2test1" title="用户群" :key="3"></sub-menu>
+          <sub-menu path="/index/module2test2" title="单个用户" :key="4"></sub-menu>
         </template>
       </menu-item>
-      <menu-item path="/index/cc" icon="" name="表格管理" index="2">
+      <menu-item path="/index/cc" icon="" name="表格管理" index=2 v-show="$store.state.role == 'ROLE_ADMIN' || $store.state.role == 'ROLE_SUPERADMIN'">
         <template v-slot:body>
           <sub-menu path="/index/module3page1" title="单个用户"></sub-menu>
           <sub-menu path="/index/module3page2" title="多个用户"></sub-menu>
@@ -28,12 +26,12 @@
       <menu-item path="/index/home" icon="" name="信息收集模块" index=3>
         <template v-slot:body>
           <sub-menu path="/index/module4page1" title="我收到的"></sub-menu>
-          <sub-menu path="/index/module4page2" title="查询填写情况"></sub-menu>
+          <sub-menu path="/index/module4page2" title="查询填写情况" v-show="$store.state.role == 'ROLE_ADMIN' || $store.state.role == 'ROLE_SUPERADMIN'"></sub-menu>
         </template>
       </menu-item>
-      <menu-item path="/index/home" icon="" name="数据浏览与查询" index=4>
+      <menu-item path="/index/home" icon="" name="数据浏览与查询" index=4 v-show="$store.state.role == 'ROLE_ADMIN' || $store.state.role == 'ROLE_SUPERADMIN'">
         <template v-slot:body>
-          <sub-menu path="/index/module5page1" title="我收到的"></sub-menu>
+<!--          <sub-menu path="/index/module5page1" title="我收到的"></sub-menu>-->
           <sub-menu path="/index/module5page2" title="我发布的"></sub-menu>
         </template>
       </menu-item>

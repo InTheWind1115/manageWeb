@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import {myRequest} from "./utils/request";
+import antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
+import Xlsx from 'xlsx'
+Vue.use(antd)
 // import {Button} from "ant-design-vue";
 // import {Menu} from "ant-design-vue";
 // import {Icon} from "ant-design-vue";
@@ -17,6 +21,7 @@ import {myRequest} from "./utils/request";
 
 Vue.config.productionTip = false
 Vue.prototype.$myRequest = myRequest;
+Vue.prototype.xlsx = Xlsx;
 
 new Vue({
   router,

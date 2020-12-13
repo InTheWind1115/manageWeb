@@ -58,7 +58,12 @@
           }
         }).then(res => {
           let data = res.data;
+          console.log(res);
           if (data['success'] === true) {
+            console.log(res.headers.authorization);
+            _this.$store.commit('changeToken', res.headers.authorization);
+            _this.$store.commit('changeUsername', data['message']);
+            _this.$store.commit('changeRole', data['result'][0].roleName);
             _this.$router.push('/index');
           } else {
             let infoEle = document.getElementsByClassName('login-box-right-body-box2-hint')[0];

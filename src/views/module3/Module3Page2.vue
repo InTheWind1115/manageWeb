@@ -32,6 +32,18 @@
         <input type="text" class="body-show-input" placeholder="请输入字段名称">
       </div>
     </div>
+
+    <a-modal
+      title="详细信息"
+      :visible="visible"
+      :confirm-loading="confirmLoading"
+      @ok="handleOk"
+      @cancel="handleCancel"
+    >
+      <div>
+        {{ModalText}}
+      </div>
+    </a-modal>
   </div>
 </template>
 
@@ -40,6 +52,9 @@
     name: "Module3Page2",
     data() {
       return {
+        ModalText: '操作失败！',
+        visible: false,
+        confirmLoading: false,
         selected: 0,
         users: [
           {
@@ -124,6 +139,19 @@
       this.academy = this.academies[this.selected][0].value;
     },
     methods: {
+      handleOk(e) {
+        this.confirmLoading = true;
+        setTimeout(() => {
+          this.visible = false;
+          this.confirmLoading = false;
+        }, 100);
+        e;
+      },
+      handleCancel(e) {
+        console.log('Clicked cancel button');
+        this.visible = false;
+        e;
+      },
       changeAcademy() {
         let department = this.department;
         let _this = this;
@@ -159,6 +187,8 @@
           }
         }).then( res => {
           console.log(res);
+          this.ModalText = res.data.message;
+          this.visible = true;
         }).catch(err => {
           console.log(err);
         })

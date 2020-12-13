@@ -6,6 +6,7 @@
         请输入要查询的表格ID：
         <input type="text" v-model="formId" class="body-header-input" placeholder="表格ID">
         <div class="body-header-btn" @click="aboutWrite">查询</div>
+        <a-button type="primary" @click="btnExport">生成Excel</a-button>
       </div>
       <div class="body-show">
         <table style="border-collapse: collapse" class="body-show-table">
@@ -31,6 +32,53 @@
       }
     },
     methods: {
+      btnExport() {
+        console.log(this.xlsx);
+        let table = document.getElementsByClassName('body-show-table')[0];
+        let sheet = this.xlsx.utils.table_to_sheet(table);
+        this.openDownloadDialog(this.sheet2blob(sheet), '下载.xlsx');
+      },
+      sheet2blob(sheet, sheetName) {
+        let _this = this;
+        sheetName = sheetName || 'sheet1';
+        var workbook = {
+          SheetNames: [sheetName],
+          Sheets: {}
+        };
+        workbook.Sheets[sheetName] = sheet; // 生成excel的配置项
+
+        var wopts = {
+          bookType: 'xlsx', // 要生成的文件类型
+          bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+          type: 'binary'
+        };
+        var wbout = _this.xlsx.write(workbook, wopts);
+        var blob = new Blob([s2ab(wbout)], {
+          type: "application/octet-stream"
+        }); // 字符串转ArrayBuffer
+        function s2ab(s) {
+          var buf = new ArrayBuffer(s.length);
+          var view = new Uint8Array(buf);
+          for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+          return buf;
+        }
+        return blob;
+      },
+      openDownloadDialog(url, saveName) {
+        if (typeof url == 'object' && url instanceof Blob) {
+          url = URL.createObjectURL(url); // 创建blob地址
+        }
+        var aLink = document.createElement('a');
+        aLink.href = url;
+        aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+        var event;
+        if (window.MouseEvent) event = new MouseEvent('click');
+        else {
+          event = document.createEvent('MouseEvents');
+          event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        }
+        aLink.dispatchEvent(event);
+      },
       aboutWrite() {
         let _this = this;
         _this.$myRequest({

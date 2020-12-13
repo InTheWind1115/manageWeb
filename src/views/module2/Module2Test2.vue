@@ -28,6 +28,18 @@
         </table>
       </div>
     </div>
+
+    <a-modal
+      title="详细信息"
+      :visible="visible"
+      :confirm-loading="confirmLoading"
+      @ok="handleOk"
+      @cancel="handleCancel"
+    >
+      <div>
+        {{ModalText}}
+      </div>
+    </a-modal>
   </div>
 </template>
 
@@ -36,6 +48,9 @@
     name: "Module2Test2",
     data() {
       return {
+        ModalText: '操作失败！',
+        visible: false,
+        confirmLoading: false,
         limits: [
           {
             value: 4,
@@ -62,6 +77,19 @@
       this.limit = this.limits[0].value;
     },
     methods: {
+      handleOk(e) {
+        this.confirmLoading = true;
+        setTimeout(() => {
+          this.visible = false;
+          this.confirmLoading = false;
+        }, 100);
+        e;
+      },
+      handleCancel(e) {
+        console.log('Clicked cancel button');
+        this.visible = false;
+        e;
+      },
       getUserData() {
         let _this = this;
         _this.$myRequest({
@@ -103,6 +131,8 @@
           }
         }).then( res => {
           console.log(res);
+          this.ModalText = res.data.message;
+          this.visible = true;
         }).catch(err => {
           console.log(err);
         })

@@ -22,6 +22,19 @@
       <input type="text" class="body-show-input" placeholder="请输入字段名称">
     </div>
   </div>
+
+
+  <a-modal
+    title="详细信息"
+    :visible="visible"
+    :confirm-loading="confirmLoading"
+    @ok="handleOk"
+    @cancel="handleCancel"
+  >
+    <div>
+      {{ModalText}}
+    </div>
+  </a-modal>
 </div>
 </template>
 
@@ -30,11 +43,27 @@ export default {
   name: "Module3Page1",
   data() {
     return {
+      ModalText: '操作失败！',
+      visible: false,
+      confirmLoading: false,
       userId: '',
       formContent: ''
     }
   },
   methods: {
+    handleOk(e) {
+      this.confirmLoading = true;
+      setTimeout(() => {
+        this.visible = false;
+        this.confirmLoading = false;
+      }, 100);
+      e;
+    },
+    handleCancel(e) {
+      console.log('Clicked cancel button');
+      this.visible = false;
+      e;
+    },
     formToUser() {
       let _this = this;
       let inputs = document.getElementsByClassName('body-show-input');
@@ -56,6 +85,8 @@ export default {
         }
       }).then( res => {
         console.log(res);
+        this.ModalText = res.data.message;
+        this.visible = true;
       }).catch(err => {
         console.log(err);
       })

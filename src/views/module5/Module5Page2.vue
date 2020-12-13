@@ -40,14 +40,58 @@
         },
       }).then( res => {
         console.log(res);
+        let users = res.data.result;
+        let table = document.getElementsByClassName('body-table')[0];
+        table.innerHTML = `
+            <tr class="body-table-tr">
+              <td>ID</td>
+              <td>表格ID</td>
+              <td>发布者</td>
+              <td>发布时间</td>
+              <td>字段内容</td>
+              <td>接收者</td>
+            </tr>`;
+        for (let i = 0; i < users.length; i++) {
+          let date = _this.dateFormat("YYYY-mm-dd HH:MM", new Date(users[i].publishTime));
+          table.innerHTML = table.innerHTML + `
+                                                <tr class="body-table-tr">
+                                                  <td>${i}</td>
+                                                  <td>${users[i].formId}</td>
+                                                  <td>${users[i].publisher}</td>
+                                                  <td>${date}</td>
+                                                  <td>${users[i].publishContent}</td>
+                                                  <td>${users[i].receiver}</td>
+                                                </tr>`
+        }
       }).catch(err => {
         console.log(err);
       })
+    },
+    methods: {
+      dateFormat(fmt, date) {
+        let ret;
+        const opt = {
+          "Y+": date.getFullYear().toString(),        // 年
+          "m+": (date.getMonth() + 1).toString(),     // 月
+          "d+": date.getDate().toString(),            // 日
+          "H+": date.getHours().toString(),           // 时
+          "M+": date.getMinutes().toString(),         // 分
+          "S+": date.getSeconds().toString()          // 秒
+          // 有其他格式化字符需求可以继续添加，必须转化成字符串
+        };
+        for (let k in opt) {
+          ret = new RegExp("(" + k + ")").exec(fmt);
+          if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+          }
+        }
+        return fmt;
+      }
     }
   }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
   .box5-2 {
     .header {
       width: 100%;

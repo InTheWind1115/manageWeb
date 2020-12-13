@@ -8,6 +8,11 @@
   export default {
     components: {
       menuCustom
+    },
+    created() {
+      let _this = this;
+      if (_this.$store.state.token == '')
+        _this.$router.push('/login');
     }
   };
 </script>

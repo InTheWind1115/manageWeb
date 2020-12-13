@@ -7,11 +7,11 @@
             <img src="@/assets/images/njtech.jpg" alt="头像">
           </div>
           <div class="menu-profile-tricky-dialog-profile-info">
-            <div class="menu-profile-tricky-dialog-profile-info-name overflow-hidden">凉风有信</div>
-            <div class="menu-profile-tricky-dialog-profile-info-email overflow-hidden">@201821017132@njtech.edu.cn</div>
+            <div class="menu-profile-tricky-dialog-profile-info-name overflow-hidden">{{$store.state.userName}}</div>
+            <div class="menu-profile-tricky-dialog-profile-info-email overflow-hidden">{{$store.state.userName}}@njtech.edu.cn</div>
           </div>
         </div>
-        <div class="menu-profile-tricky-dialog-logout">
+        <div class="menu-profile-tricky-dialog-logout" @click="logOut">
           退出
         </div>
       </div>
@@ -21,7 +21,7 @@
         <img src="@/assets/images/njtech.jpg" alt="头像">
       </div>
       <div class="menu-profile-info">
-        <div class="menu-profile-info-name overflow-hidden">凉风有信</div>
+        <div class="menu-profile-info-name overflow-hidden">{{$store.state.userName}}</div>
       </div>
       <div class="menu-profile-tran"></div>
     </div>
@@ -45,6 +45,10 @@
       },
       showDialog() {
         this.dialogFlag = !this.dialogFlag;
+      },
+      logOut() {
+        this.$store.state.token = '';
+        this.$router.push('/login');
       }
     },
     mounted() {

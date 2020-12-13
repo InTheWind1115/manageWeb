@@ -29,17 +29,55 @@
             <td>身份</td>
             <td>详细信息</td>
           </tr>
-<!--          <tr class="body-show-tr">-->
-<!--            <td>01</td>-->
-<!--            <td>权纯洋</td>-->
-<!--            <td>女</td>-->
-<!--            <td>2018210</td>-->
-<!--            <td>学生</td>-->
-<!--            <td><button>详情</button></td>-->
-<!--          </tr>-->
+          <tr class="body-show-tr" v-for="(result, i) in results" :key="result.id">
+            <td>{{i}}</td>
+            <td>{{result.name}}</td>
+            <td>{{result.sex === 0 ? '男' : '女'}}</td>
+            <td>{{result.userId}}</td>
+            <td>{{result.position}}</td>
+            <td><a-button type="primary" @click="showModal(i)">详情</a-button></td>
+          </tr>
         </table>
       </div>
     </div>
+
+    <a-modal
+      title="详细信息"
+      :visible="visible"
+      :confirm-loading="confirmLoading"
+      @ok="handleOk"
+      @cancel="handleCancel"
+    >
+      <div>
+        <div>
+          姓名：<input type="text" :value="results[0] == null? '': results[resultSelected].name">
+        </div>
+        <div>
+          专业：<input type="text" :value="results[0] == null? '': results[resultSelected].academy">
+        </div>
+        <div>
+          出生日期：<input type="text" :value="results[0] == null? '': this.dateFormat('YYYY-mm-dd HH:MM', new Date(results[resultSelected].birthdate))">
+        </div>
+        <div>
+          学院：<input type="text" :value="results[0] == null? '': results[resultSelected].department">
+        </div>
+        <div>
+          在职状况：<input type="text" :value="results[0] == null? '': results[resultSelected].incumbency">
+        </div>
+        <div>
+          手机号：<input type="text" :value="results[0] == null? '': results[resultSelected].phone">
+        </div>
+        <div>
+          身份：<input type="text" :value="results[0] == null? '': results[resultSelected].position">
+        </div>
+        <div>
+          性别：<input type="text" :value="results[0] == null? '': (results[resultSelected].sex == 0 ? '男' : '女')">
+        </div>
+        <div>
+          学号：<input type="text" :value="results[0] == null? '': results[resultSelected].userId">
+        </div>
+      </div>
+    </a-modal>
   </div>
 </template>
 
@@ -48,6 +86,11 @@
     name: "Test",
     data() {
       return {
+        ModalText: 'Content of the modal',
+        visible: false,
+        confirmLoading: false,
+        results: [],
+        resultSelected: 0,
         selected: 0,
         users: [
           {
@@ -132,6 +175,24 @@
       this.academy = this.academies[this.selected][0].value;
     },
     methods: {
+      handleOk(e) {
+        this.ModalText = 'The modal will be closed after two seconds';
+        this.confirmLoading = true;
+        setTimeout(() => {
+          this.visible = false;
+          this.confirmLoading = false;
+        }, 100);
+        e;
+      },
+      handleCancel(e) {
+        console.log('Clicked cancel button');
+        this.visible = false;
+        e;
+      },
+      showModal(e) {
+        this.visible = true;
+        this.resultSelected = e;
+      },
       changeAcademy() {
         let department = this.department;
         let _this = this;
@@ -158,31 +219,31 @@
             academy: _this.academy
           }
         }).then( res => {
+          console.log(res);
           let users = res.data.result;
-          let table = document.getElementsByClassName('body-show-table')[0];
-          table.innerHTML = `
-            <tr class="body-show-tr">
-              <td>ID</td>
-              <td>姓名</td>
-              <td>性别</td>
-              <td>人员编号</td>
-              <td>身份</td>
-              <td>详细信息</td>
-            </tr>`;
-          for (let i = 0; i < users.length; i++) {
-            table.innerHTML = table.innerHTML + `
-                                                <tr class="body-show-tr">
-                                                  <td>${i}</td>
-                                                  <td>${users[i].name}</td>
-                                                  <td>${users[i].sex === 0? '男' : '女'}</td>
-                                                  <td>${users[i].userId}</td>
-                                                  <td>${users[i].position}</td>
-                                                  <td><button>详情</button></td>
-                                                </tr>`
-          }
+          _this.results = users;
         }).catch(err => {
           console.log(err);
         })
+      },
+      dateFormat(fmt, date) {
+        let ret;
+        const opt = {
+          "Y+": date.getFullYear().toString(),        // 年
+          "m+": (date.getMonth() + 1).toString(),     // 月
+          "d+": date.getDate().toString(),            // 日
+          "H+": date.getHours().toString(),           // 时
+          "M+": date.getMinutes().toString(),         // 分
+          "S+": date.getSeconds().toString()          // 秒
+          // 有其他格式化字符需求可以继续添加，必须转化成字符串
+        };
+        for (let k in opt) {
+          ret = new RegExp("(" + k + ")").exec(fmt);
+          if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+          }
+        }
+        return fmt;
       }
     }
   }

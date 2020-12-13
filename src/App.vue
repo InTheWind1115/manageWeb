@@ -27,6 +27,7 @@
   @import "assets/normalize.css";
   @import "assets/common.css";
   @import "assets/style.css";
+  @import "~ant-design-vue/dist/antd.css";
   html,
   body,
   #app {
